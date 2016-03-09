@@ -15,8 +15,8 @@ public:
 	TicTacToe(); //Default Constructor Declaration
 	~TicTacToe();// Default Destructor Declaration
 	void restart();
-	bool move(int, int, int);
+	bool move(int, int, int); //Move checking function prototype
 	void print();
-	int isWon();
+	int isWon();  //Return the player which one using an integer
 };
 #endif
