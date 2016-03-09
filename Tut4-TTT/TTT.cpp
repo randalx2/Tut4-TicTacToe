@@ -5,8 +5,8 @@ using namespace std;
 
 TicTacToe::TicTacToe()//Constructor to initialize grid for new play
 {
-	for (int i = 1; i <= 3; i++)
-	for (int j = 1; j <= 3; j++)
+	for (int i = 0; i < 3; i++)
+	for (int j = 0; j < 3; j++)
 		gridbox[i][j] = '-';
 };
 
@@ -16,8 +16,8 @@ TicTacToe::~TicTacToe() //Default Destructor
 
 void TicTacToe::restart()  //Resets all elements of gribox -- Same as default constructor
 {
-	for (int i = 1; i <= 3; i++)
-	for (int j = 1; j <= 3; j++)
+	for (int i = 0; i < 3; i++)
+	for (int j = 0; j < 3; j++)
 		gridbox[i][j] = '-';
 };
 
@@ -33,15 +33,15 @@ bool TicTacToe::move(int rows, int cols, int player)
 
 void TicTacToe::print()
 {
-	for (int i = 1; i <= 3; i++)
+	for (int i = 0; i < 3; i++)
 	{
-		for (int j = 1; j <= 3; j++)
+		for (int j = 0; j < 3; j++)
 			cout << gridbox[i][j] << "\t"; //insert tab after each element
 		cout << endl;  //end the line after filling each row
 	};
 };
 
-int TicTacToe::isWon()
+/*int TicTacToe::isWon()
 {
 	
-};
+};*/
