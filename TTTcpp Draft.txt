@@ -23,19 +23,7 @@ void TicTacToe::restart()
 
 bool TicTacToe::move(int r, int c, int p)
 {
-	bool flag = 0;
-	if (r <= 3 && c <= 3 && r > 0 && c > 0)
-	{
-		if (gridbox[r][c] == '-')//checks if the space available
-		{
-			flag = 1;
-			if (p == 1)
-				gridbox[r][c] = 'x';
-			else
-				gridbox[r][c] = 'o';
-		};
-	};
-	return flag;
+	
 };
 
 void TicTacToe::print()
@@ -50,78 +38,5 @@ void TicTacToe::print()
 
 int TicTacToe::isWon()
 {
-	int checkp1 = 0, checkp2 = 0, inPlay = 0;
-
-	//check rows
-	for (int i = 1; i <= 3; i++)
-	{
-		checkp1 = 0, checkp2 = 0;
-		for (int j = 1; j <= 3; j++)
-		{
-			if (gridbox[i][j] == 'x')
-				checkp1++;
-			if (gridbox[i][j] == 'o')
-				checkp2++;
-		};
-		if (checkp1 == 3)
-			return 1;
-		if (checkp2 == 3)
-			return 2;
-	};
-	checkp1 = 0, checkp2 = 0;
-
-	//check columns
-	for (int i = 1; i <= 3; i++)
-	{
-		checkp1 = 0, checkp2 = 0;
-		for (int j = 1; j <= 3; j++)
-		{
-			if (gridbox[j][i] == 'x')
-				checkp1++;
-			if (gridbox[j][i] == 'o')
-				checkp2++;
-			if (gridbox[j][i] == '-')
-				inPlay = 1;
-		};
-		if (checkp1 == 3)
-			return 1;
-		if (checkp2 == 3)
-			return 2;
-	};
-	checkp1 = 0, checkp2 = 0;
-
-	//check 1st diagnol
-	for (int i = 1; i <= 3; i++)
-	{
-		if (gridbox[i][i] == 'x')
-			checkp1++;
-		if (gridbox[i][i] == 'o')
-			checkp2++;
-	};
-	if (checkp1 == 3)
-		return 1;
-	if (checkp2 == 3)
-		return 2;
-
-	checkp1 = 0, checkp2 = 0;
-
-	//check 2nd diagnol
-	int t = 1;
-	for (int j = 3; j >= 1; j--)
-	{
-		if (gridbox[t][j] == 'x')
-			checkp1++;
-		if (gridbox[t][j] == 'o')
-			checkp2++;
-		t++;
-	}
-	if (checkp1 == 3)
-		return 1;
-	if (checkp2 == 3)
-		return 2;
-
-	if (inPlay = 1)
-		return 3;
-	else
-		return 0;
+	
 };

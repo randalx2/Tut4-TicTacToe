@@ -3,18 +3,18 @@
 
 using namespace std;
 
-TicTacToe::TicTacToe()//initializes grid for new play
+TicTacToe::TicTacToe()//Constructor to initialize grid for new play
 {
 	for (int i = 1; i <= 3; i++)
 	for (int j = 1; j <= 3; j++)
 		gridbox[i][j] = '-';
 };
 
-TicTacToe::~TicTacToe()
+TicTacToe::~TicTacToe() //Default Destructor
 {
 };
 
-void TicTacToe::restart()
+void TicTacToe::restart()  //Resets all elements of gribox 
 {
 	for (int i = 1; i <= 3; i++)
 	for (int j = 1; j <= 3; j++)
