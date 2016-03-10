@@ -73,16 +73,16 @@ int TicTacToe::isWon()
 	}
 
 	//Check the columns
-	for (int i = 0; i < 3; i++)
+	for (int j = 0; j < 3; j++)
 	{
 		checkp1 = 0;
 		checkp2 = 0;  //Reset control signals
 
-		for (int j = 0; j < 3; j++)
+		for (int i = 0; i < 3; i++)
 		{
-			if (gridbox[j][i] == 'X'){ checkp1++; }
-			if (gridbox[j][i] == '0'){ checkp2++; }
-			if (gridbox[j][i] == '-'){ inProgress = 1; }
+			if (gridbox[i][j] == 'X'){ checkp1++; }
+			if (gridbox[i][j] == '0'){ checkp2++; }
+			if (gridbox[i][j] == '-'){ inProgress = 1; }
 		}
 		if (checkp1 == 3){ return 1; } //3 X's in a column hence player 1 wins
 		if (checkp2 == 3){ return 2; } //3 0's in a column hence player 2 wins
