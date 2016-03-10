@@ -49,12 +49,13 @@ void TicTacToe::print()
 
 int TicTacToe::isWon()
 {
-	int checkp1 = 0, checkp2 = 0, inProgress = 0, draw = 0; //Check control signals for player1, player2, and game progress 
-	//Check if Player 1 has won using X's
+	int checkp1 = 0, checkp2 = 0, inProgress = 0; //Check control signals for player1, player2, and game progress 
+	
 	/* Array layout is: 00 01 02
 						10 11 12
 						20 21 22*/
 	//check the rows
+
 	checkp1 = 0;
 	checkp2 = 0;  //Reset control signals
 	for (int i = 0; i < 3; i++)
@@ -65,8 +66,8 @@ int TicTacToe::isWon()
 			if (gridbox[i][j] == '0'){ checkp2++; }
 			if (gridbox[i][j] == '-'){ inProgress = 1; }
 		}
-		if (checkp1 == 3){ return 1; }
-		if (checkp2 == 3){ return 2; }
+		if (checkp1 == 3){ return 1; } //3 X's in a row hence player 1 wins
+		if (checkp2 == 3){ return 2; } //3 0's in a row hence player 2 wins
 
 	}
 
@@ -81,8 +82,8 @@ int TicTacToe::isWon()
 			if (gridbox[j][i] == '0'){ checkp2++; }
 			if (gridbox[j][i] == '-'){ inProgress = 1; }
 		}
-		if (checkp1 == 3){ return 1; }
-		if (checkp2 == 3){ return 2; }
+		if (checkp1 == 3){ return 1; } //3 X's in a column hence player 1 wins
+		if (checkp2 == 3){ return 2; } //3 0's in a column hence player 2 wins
 	}
 
 	//Check the First Diagonal Line
@@ -95,8 +96,8 @@ int TicTacToe::isWon()
 		if (gridbox[i][i] == '-'){ inProgress = 1; }
 
 	}
-	if (checkp1 == 3){ return 1; }
-	if (checkp2 == 3){ return 2; }
+	if (checkp1 == 3){ return 1; } //3 X's in the main diagonal hence player 1 wins
+	if (checkp2 == 3){ return 2; } //3 0's in the main diagonal hence player 2 wins
 
 
 	//Check the Second diagonal line
