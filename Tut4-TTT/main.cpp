@@ -16,7 +16,7 @@ int main(){
 	int player = 1; //Initialize variable to check player number
 	int n = 0;
 	int x = 0, y = 0; //Store coordinates for user's move
-	
+	char userinput = 'q';
 
 	TicTacToe gameBoard = TicTacToe(); // Created gameboard object of class TicTacToe
 
@@ -24,7 +24,6 @@ int main(){
 	cout << "To play, please enter your move in the following format: " << endl;
 	cout << " row number(0 to 2) column number(0 to 2) player number(1 or 2) " << endl;
 	cout << "Player one uses X's and Player 2 uses 0's" << endl;
-	
 
 	//Test The Print member function and output of grid
 	gameBoard.print();  //Initial layout of board is empty
@@ -32,49 +31,52 @@ int main(){
 	//Main game loop starts here
 	//Since there are 9 boxes in the grid, the game uses 9 moves at most
 
-	for (int i = 0; i < 9; i++)
-	{
-		cout << "Enter your move and Player number " << endl;
-		cin >> x >> y >> player;
-
-		if (gameBoard.move(x, y, player))
+		for (int i = 0; i < 9; i++)
 		{
-			gameBoard.print();
-			gameBoard.isWon();
+			cout << "Enter your move and Player number " << endl;
+			cout << "Grid Layout: " << endl;
+			cout << "00 01 02" << endl;
+			cout << "10 11 12" << endl;
+			cout << "20 21 22" << endl;
 
-			if ((gameBoard.isWon() == 1))
+			cin >> x >> y >> player;
+
+			if (gameBoard.move(x, y, player))
 			{
-				cout << "Player 1 wins!! " << endl;
-				gameBoard.restart();
-				i = 0; //Reset Game Counter
+				gameBoard.print();
+				gameBoard.isWon();
+
+				if ((gameBoard.isWon() == 1))
+				{
+					cout << "Player 1 wins!! " << endl;
+					gameBoard.restart();
+					i = 0; //Reset Game Counter
+				}
+				else if ((gameBoard.isWon() == 2))
+				{
+					cout << "Player 2 Wins!! " << endl;
+					gameBoard.restart();
+					i = 0;
+				}
+				else if ((gameBoard.isWon() == 3))
+				{
+					cout << "Draw Match!! " << endl;
+					gameBoard.restart();
+					i = 0;
+				}
+				else if ((gameBoard.isWon() == 4))
+				{
+					cout << "Game still in progress " << endl;
+				}
+				else{ cout << "Game Ended" << endl; }
 			}
-			else if ((gameBoard.isWon() == 2))
+
+			else
 			{
-				cout << "Player 2 Wins!! " << endl;
-				gameBoard.restart();
-				i = 0;
+				cout << "Invalid Input. Please try again " << endl;
+				i--; //This move didn't count so revert the counter back to previous value
 			}
-			else if ((gameBoard.isWon() == 3))
-			{
-				cout << "Draw Match!! " << endl;
-				gameBoard.restart();
-				i = 0;
-			}
-			else if ((gameBoard.isWon() == 4))
-			{
-				cout << "Game still in progress " << endl;
-			}
-			else{ cout << "Game Ended" << endl; }
 		}
-
-		else
-		{
-			cout << "Invalid Input. Please try again " << endl;
-			i--; //This move didn't count so revert the counter back to previous value
-		}
-	}
-
-	
 
 	system("PAUSE");
 	return 0;

@@ -54,12 +54,13 @@ int TicTacToe::isWon()
 	/* Array layout is: 00 01 02
 						10 11 12
 						20 21 22*/
+	
 	//check the rows
-
-	checkp1 = 0;
-	checkp2 = 0;  //Reset control signals
 	for (int i = 0; i < 3; i++)
 	{	
+		checkp1 = 0;
+		checkp2 = 0;  //Reset control signals
+
 		for (int j = 0; j < 3; j++)
 		{
 			if (gridbox[i][j] == 'X'){ checkp1++; }
@@ -72,10 +73,11 @@ int TicTacToe::isWon()
 	}
 
 	//Check the columns
-	checkp1 = 0;
-	checkp2 = 0;  //Reset control signals
 	for (int i = 0; i < 3; i++)
 	{
+		checkp1 = 0;
+		checkp2 = 0;  //Reset control signals
+
 		for (int j = 0; j < 3; j++)
 		{
 			if (gridbox[j][i] == 'X'){ checkp1++; }
@@ -95,38 +97,38 @@ int TicTacToe::isWon()
 		if (gridbox[i][i] == '0'){ checkp2++; }
 		if (gridbox[i][i] == '-'){ inProgress = 1; }
 
+		if (checkp1 == 3){ return 1; } //3 X's in the main diagonal hence player 1 wins
+		if (checkp2 == 3){ return 2; } //3 0's in the main diagonal hence player 2 wins
+
 	}
-	if (checkp1 == 3){ return 1; } //3 X's in the main diagonal hence player 1 wins
-	if (checkp2 == 3){ return 2; } //3 0's in the main diagonal hence player 2 wins
-
-
+	
 	//Check the Second diagonal line
 	//This line's indicies are oddly placed when compared to previous patters
 	//As the row number increases, the column number decreases
 	checkp1 = 0;
 	checkp2 = 0;  //Reset control signals
-	int temprow = 1;
+	int temprow = 0;
 	for (int j = 2; j >= 0; j--)
 	{
 		if (gridbox[temprow][j] == 'X'){ checkp1++; }
 		if (gridbox[temprow][j] == '0'){ checkp2++; }
 		if (gridbox[temprow][j] == '-'){ inProgress = 1; }
 		temprow++;
+
+		if (checkp1 == 3){ return 1; }
+		if (checkp2 == 3){ return 2; }
 	}
-	if (checkp1 == 3){ return 1; }
-	if (checkp2 == 3){ return 2; }
+
 
 	//Do Final Checking for in progress play or draws
 
 	if ((checkp1 == 3) && (checkp2 == 3))
 	{
-		cout << "Draw" << endl;
 		return 3;
 	}
 
 	if (inProgress == 1)
 	{
-		cout << "Game in progress" << endl;
 		return 4;
 	}
 	else
